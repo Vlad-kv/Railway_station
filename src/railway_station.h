@@ -23,6 +23,8 @@ public:
 
     bool is_station_exists(const std::string& name);
     const std::vector<std::shared_ptr<train_data>>& get_station_info(const std::string& name);
+
+    const binary_tree<std::string, std::vector<std::shared_ptr<train_data>>>* get_stations();
 };
 
 #endif // RAILWAY_STATION_H

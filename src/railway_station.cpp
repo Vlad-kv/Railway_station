@@ -4,6 +4,10 @@
 
 using namespace std;
 
+const binary_tree<string, vector<shared_ptr<train_data>>>* railway_station::get_stations() {
+    return &stations;
+}
+
 railway_station::railway_station() {
 }
 

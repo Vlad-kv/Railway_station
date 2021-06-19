@@ -5,6 +5,11 @@
 #include <iostream>
 
 template <typename key_t, typename value_t>
+const typename binary_tree<key_t, value_t>::node* binary_tree<key_t, value_t>::get_root() const {
+    return root;
+}
+
+template <typename key_t, typename value_t>
 binary_tree<key_t, value_t>::node::node(key_t const& key, value_t const &value)
     : data(key, value), left(nullptr), right(nullptr), parent(nullptr) {
 }
@@ -318,44 +323,3 @@ void binary_tree<key_t, value_t>::node::rotate_with_parent() {
     }
     parent = parent_of_parent;
 }
-
-template <typename key_t, typename value_t>
-void binary_tree<key_t, value_t>::debug_print(node *ptr) const {
-    if (ptr == nullptr) {
-        return;
-    }
-    using namespace std;
-    if (ptr->parent == nullptr) {
-        cout << "-";
-    } else {
-        cout << ptr->parent->data.first << " ";
-    }
-
-    cout << " -> " << ptr->data.first << " -> ";
-
-    if (ptr->left == nullptr) {
-        cout << "-";
-    } else {
-        cout << ptr->left->data.first;
-    }
-
-    cout << ", ";
-
-    if (ptr->right == nullptr) {
-        cout << "-";
-    } else {
-        cout << ptr->right->data.first;
-    }
-
-    cout << "\n";
-
-    debug_print(ptr->left);
-    debug_print(ptr->right);
-}
-
-template <typename key_t, typename value_t>
-void binary_tree<key_t, value_t>::debug_print() const {
-    debug_print(root);
-    std::cout << "---------\n";
-}
-

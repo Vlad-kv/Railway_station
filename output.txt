@@ -1,0 +1,17 @@
+St_1 Sun May 30 05:00:00 2021
+St_1 Sun May 25 20:45:00 2021
+St_1 Sun May 10 10:30:00 2021
+St_2 Sun May 30 20:30:00 2021
+St_2 Sun May 19 15:30:00 2021
+St_3 Sun May 13 20:00:00 2021
+No train with id "7"
+All trains arriving to station:
+  1 Sun May 30 05:00:00 2021
+  2 Sun May 25 20:45:00 2021
+  3 Sun May 10 10:30:00 2021
+All trains arriving to station:
+  4 Sun May 30 20:30:00 2021
+  5 Sun May 19 15:30:00 2021
+All trains arriving to station:
+  6 Sun May 13 20:00:00 2021
+No station with name "St_4"

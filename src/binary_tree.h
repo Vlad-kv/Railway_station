@@ -75,8 +75,9 @@ public:
     iterator begin() const;
     iterator end() const;
 
-    void debug_print(node* ptr) const;
-    void debug_print() const;
+    const node* get_root() const;
+
+    friend class layout;
 };
 
 #endif // BINARY_TREE_H
