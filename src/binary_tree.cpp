@@ -53,7 +53,7 @@ bool binary_tree<key_t, value_t>::iterator::operator==(const iterator& it) {
 }
 
 template <typename key_t, typename value_t>
-std::pair<key_t, value_t> const& binary_tree<key_t, value_t>::iterator::operator*() const {
+std::pair<const key_t, value_t>& binary_tree<key_t, value_t>::iterator::operator*() {
     return ptr->data;
 }
 
@@ -116,12 +116,6 @@ typename binary_tree<key_t, value_t>::iterator binary_tree<key_t, value_t>::iter
 template <typename key_t, typename value_t>
 typename binary_tree<key_t, value_t>::iterator binary_tree<key_t, value_t>::insert(key_t const& key, value_t const& value) {
     binary_tree<key_t, value_t> left_tree(split(key));
-
-//    std::cout << "In split:\n";
-//
-//    left_tree.debug_print();
-//    debug_print();
-
     node* res;
 
     if ((root != nullptr) && (root->data.first == key)) {
@@ -141,16 +135,16 @@ typename binary_tree<key_t, value_t>::iterator binary_tree<key_t, value_t>::inse
             root->parent = res;
         }
         root = res;
-
-
-//        std::cout << "  In if:\n";
-//        debug_print();
     }
     return iterator(res, this);
 }
 
 template <typename key_t, typename value_t>
 typename binary_tree<key_t, value_t>::iterator binary_tree<key_t, value_t>::find(key_t const& key) {
+    if (root == nullptr) {
+        return iterator(nullptr, this);
+    }
+
     node* p = root;
     while (p->data.first != key) {
         if (p->data.first < key) {
@@ -194,9 +188,6 @@ void binary_tree<key_t, value_t>::erase(iterator it) {
 
 template <typename key_t, typename value_t>
 typename binary_tree<key_t, value_t>::iterator binary_tree<key_t, value_t>::begin() const {
-
-//    std::cout << (root == nullptr) << " !!\n";
-
     if (root == nullptr) {
         return iterator(nullptr, this);
     }
@@ -335,28 +326,28 @@ void binary_tree<key_t, value_t>::debug_print(node *ptr) const {
     }
     using namespace std;
     if (ptr->parent == nullptr) {
-        cout << "0";
+        cout << "-";
     } else {
-        cout << "{" << ptr->parent->data.first << " " << ptr->parent->data.second << "}";
+        cout << ptr->parent->data.first << " ";
     }
 
-    cout << " -> {" << ptr->data.first << ", " << ptr->data.second << "} -> {";
+    cout << " -> " << ptr->data.first << " -> ";
 
     if (ptr->left == nullptr) {
-        cout << "0";
+        cout << "-";
     } else {
-        cout << "{" << ptr->left->data.first << " " << ptr->left->data.second << "}";
+        cout << ptr->left->data.first;
     }
 
     cout << ", ";
 
     if (ptr->right == nullptr) {
-        cout << "0";
+        cout << "-";
     } else {
-        cout << "{" << ptr->right->data.first << " " << ptr->right->data.second << "}";
+        cout << ptr->right->data.first;
     }
 
-    cout << "}\n";
+    cout << "\n";
 
     debug_print(ptr->left);
     debug_print(ptr->right);

@@ -7,7 +7,7 @@ template <typename key_t, typename value_t>
 class binary_tree {
 public:
     struct node {
-        std::pair<key_t, value_t> data;
+        std::pair<const key_t, value_t> data;
 
         node* left;
         node* right;
@@ -48,7 +48,7 @@ public:
         bool operator!=(const iterator& it);
         bool operator==(const iterator& it);
 
-        std::pair<key_t, value_t> const& operator*() const;
+        std::pair<const key_t, value_t>& operator*();
 
         iterator& operator++();
         iterator operator++(int);
