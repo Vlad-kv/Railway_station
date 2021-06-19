@@ -4,3 +4,9 @@
 [submodule "glm"]
 	path = glm
 	url = https://github.com/Groovounet/glm
+[submodule "OpenGlText"]
+	path = OpenGlText
+	url = https://github.com/tlorach/OpenGLText
+[submodule "Freeglut"]
+	path = Freeglut
+	url = https://github.com/dcnieho/FreeGLUT
